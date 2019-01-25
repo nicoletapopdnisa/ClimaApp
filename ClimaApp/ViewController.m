@@ -47,6 +47,8 @@
         NSLog(@"Failed retrieving data %@", error);
         dispatch_async(dispatch_get_main_queue(), ^{
             self->cityNameLabel.text = @"Connection issues";
+            self->weatherIcon.image = [UIImage imageNamed:@"dunno"];
+            self->temperatureLabel.text = @"???";
         });
         
     }];
@@ -95,6 +97,8 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"Error: %@", error);
     cityNameLabel.text = @"Location unavailable.";
+    weatherIcon.image = [UIImage imageNamed:@"dunno"];
+    temperatureLabel.text = @"???";
 }
 
 #pragma mark - ChangeCityDelegate methods
